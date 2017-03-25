@@ -2,6 +2,7 @@
 /**
  * Gordon Richardson
  */
+import javax.swing.*;
 public class hello_world
 {
     public static void main( String[] args ){
