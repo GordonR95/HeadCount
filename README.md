@@ -1,2 +1,0 @@
-# HeadCount
-Hello world
