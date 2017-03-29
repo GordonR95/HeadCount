@@ -1,0 +1,142 @@
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class GUI extends JFrame {
+	private JTable table;
+	private JTable table_1;
+	private JTextField textField;
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUI frame = new GUI();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	public GUI() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(500,500,500,500);
+		SpringLayout springLayout = new SpringLayout();
+		getContentPane().setLayout(springLayout);
+		
+		table = new JTable();
+		springLayout.putConstraint(SpringLayout.WEST, table, 10, SpringLayout.WEST, getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, table, -86, SpringLayout.SOUTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, table, 99, SpringLayout.WEST, getContentPane());
+		getContentPane().add(table);
+		
+		table_1 = new JTable();
+		getContentPane().add(table_1);
+		
+		JLabel lblUpNext = new JLabel("Up Next:");
+		springLayout.putConstraint(SpringLayout.SOUTH, lblUpNext, -427, SpringLayout.SOUTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, table, 6, SpringLayout.SOUTH, lblUpNext);
+		springLayout.putConstraint(SpringLayout.WEST, lblUpNext, 22, SpringLayout.WEST, getContentPane());
+		getContentPane().add(lblUpNext);
+		
+		JLabel lblClassCsci = new JLabel("Class: \t");
+		springLayout.putConstraint(SpringLayout.NORTH, lblClassCsci, 0, SpringLayout.NORTH, lblUpNext);
+		springLayout.putConstraint(SpringLayout.EAST, lblClassCsci, -331, SpringLayout.EAST, getContentPane());
+		getContentPane().add(lblClassCsci);
+		
+		JLabel lblCsci = new JLabel("CSCI 352");
+		springLayout.putConstraint(SpringLayout.NORTH, lblCsci, 0, SpringLayout.NORTH, lblClassCsci);
+		springLayout.putConstraint(SpringLayout.WEST, lblCsci, 8, SpringLayout.EAST, lblClassCsci);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblCsci, 51, SpringLayout.NORTH, getContentPane());
+		getContentPane().add(lblCsci);
+		
+		JLabel label = new JLabel("02/28/2017");
+		springLayout.putConstraint(SpringLayout.NORTH, label, 0, SpringLayout.NORTH, lblUpNext);
+		getContentPane().add(label);
+		
+		JLabel lblDateOf = new JLabel("Date of:");
+		springLayout.putConstraint(SpringLayout.WEST, label, 6, SpringLayout.EAST, lblDateOf);
+		springLayout.putConstraint(SpringLayout.NORTH, lblDateOf, 0, SpringLayout.NORTH, lblClassCsci);
+		springLayout.putConstraint(SpringLayout.WEST, lblDateOf, 19, SpringLayout.EAST, lblCsci);
+		getContentPane().add(lblDateOf);
+		
+		JLabel lblInsetStudentPicture = new JLabel("     Insert Student Picture Here");
+		springLayout.putConstraint(SpringLayout.NORTH, lblInsetStudentPicture, 50, SpringLayout.SOUTH, lblClassCsci);
+		springLayout.putConstraint(SpringLayout.WEST, lblInsetStudentPicture, 15, SpringLayout.EAST, table);
+		getContentPane().add(lblInsetStudentPicture);
+		
+		JButton btnNewButton = new JButton("Back");
+		springLayout.putConstraint(SpringLayout.SOUTH, lblInsetStudentPicture, -6, SpringLayout.NORTH, btnNewButton);
+		springLayout.putConstraint(SpringLayout.WEST, btnNewButton, 15, SpringLayout.EAST, table);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -115, SpringLayout.SOUTH, getContentPane());
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		getContentPane().add(btnNewButton);
+		
+		JButton btnNext = new JButton("Next");
+		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, -14, SpringLayout.WEST, btnNext);
+		springLayout.putConstraint(SpringLayout.WEST, btnNext, 234, SpringLayout.WEST, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, btnNext, -168, SpringLayout.EAST, getContentPane());
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		getContentPane().add(btnNext);
+		
+		JButton btnCalculateAttendence = new JButton("Calculate Attendence");
+		springLayout.putConstraint(SpringLayout.SOUTH, btnNext, -12, SpringLayout.NORTH, btnCalculateAttendence);
+		springLayout.putConstraint(SpringLayout.NORTH, btnCalculateAttendence, 12, SpringLayout.SOUTH, btnNewButton);
+		getContentPane().add(btnCalculateAttendence);
+		
+		JButton btnEditRoster = new JButton("Edit Roster");
+		springLayout.putConstraint(SpringLayout.EAST, btnEditRoster, -53, SpringLayout.EAST, getContentPane());
+		getContentPane().add(btnEditRoster);
+		
+		JRadioButton rdbtnPresent = new JRadioButton("Present");
+		springLayout.putConstraint(SpringLayout.WEST, rdbtnPresent, 23, SpringLayout.EAST, lblInsetStudentPicture);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnEditRoster, -34, SpringLayout.NORTH, rdbtnPresent);
+		getContentPane().add(rdbtnPresent);
+		
+		JRadioButton rdbtnAbsent = new JRadioButton("Absent");
+		springLayout.putConstraint(SpringLayout.WEST, rdbtnAbsent, 23, SpringLayout.EAST, lblInsetStudentPicture);
+		springLayout.putConstraint(SpringLayout.SOUTH, rdbtnPresent, -13, SpringLayout.NORTH, rdbtnAbsent);
+		getContentPane().add(rdbtnAbsent);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("Tardy ");
+		springLayout.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton, 202, SpringLayout.NORTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton, 23, SpringLayout.EAST, lblInsetStudentPicture);
+		springLayout.putConstraint(SpringLayout.SOUTH, rdbtnAbsent, -14, SpringLayout.NORTH, rdbtnNewRadioButton);
+		getContentPane().add(rdbtnNewRadioButton);
+		
+		JLabel lblMinutesLate = new JLabel("Minutes Late:");
+		springLayout.putConstraint(SpringLayout.EAST, lblInsetStudentPicture, -22, SpringLayout.WEST, lblMinutesLate);
+		springLayout.putConstraint(SpringLayout.NORTH, lblMinutesLate, 17, SpringLayout.SOUTH, rdbtnNewRadioButton);
+		springLayout.putConstraint(SpringLayout.EAST, lblMinutesLate, -71, SpringLayout.EAST, getContentPane());
+		getContentPane().add(lblMinutesLate);
+		
+		textField = new JTextField();
+		springLayout.putConstraint(SpringLayout.NORTH, textField, -5, SpringLayout.NORTH, lblMinutesLate);
+		springLayout.putConstraint(SpringLayout.WEST, textField, 6, SpringLayout.EAST, lblMinutesLate);
+		springLayout.putConstraint(SpringLayout.EAST, textField, -32, SpringLayout.EAST, getContentPane());
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNotes = new JLabel("Notes:");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNotes, 287, SpringLayout.NORTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, lblNotes, 23, SpringLayout.EAST, lblInsetStudentPicture);
+		getContentPane().add(lblNotes);
+		
+		JTextPane txtpnCommentHere = new JTextPane();
+		springLayout.putConstraint(SpringLayout.EAST, btnCalculateAttendence, -33, SpringLayout.WEST, txtpnCommentHere);
+		springLayout.putConstraint(SpringLayout.NORTH, txtpnCommentHere, 6, SpringLayout.SOUTH, lblNotes);
+		springLayout.putConstraint(SpringLayout.WEST, txtpnCommentHere, 14, SpringLayout.EAST, btnNext);
+		springLayout.putConstraint(SpringLayout.SOUTH, txtpnCommentHere, -85, SpringLayout.SOUTH, getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, txtpnCommentHere, -32, SpringLayout.EAST, getContentPane());
+		txtpnCommentHere.setText("Comment Here..");
+		getContentPane().add(txtpnCommentHere);
+		
+	}
+}
